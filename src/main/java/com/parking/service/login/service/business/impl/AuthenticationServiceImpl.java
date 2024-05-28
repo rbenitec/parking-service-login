@@ -7,9 +7,11 @@ import com.parking.service.login.controller.dto.RequestDto;
 import com.parking.service.login.controller.dto.ResponseDto;
 import com.parking.service.login.service.business.AuthenticationService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
+@Service
 @RequiredArgsConstructor
 public class AuthenticationServiceImpl implements AuthenticationService {
 

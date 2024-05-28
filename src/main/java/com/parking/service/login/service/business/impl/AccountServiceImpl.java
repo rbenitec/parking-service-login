@@ -5,11 +5,10 @@ import com.parking.service.login.client.dto.RequestUtpClient;
 import com.parking.service.login.client.dto.ResponseUtpClient;
 import com.parking.service.login.controller.dto.RequestDto;
 import com.parking.service.login.controller.dto.ResponseDto;
-import com.parking.service.login.entities.Account;
+import com.parking.service.login.entities.AccountEntity;
 import com.parking.service.login.repository.AccountRepository;
 import com.parking.service.login.service.business.AccountService;
 import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -17,7 +16,6 @@ import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
-@Slf4j
 public class AccountServiceImpl implements AccountService {
 
     private final AccountRepository accountRepository;
@@ -30,8 +28,8 @@ public class AccountServiceImpl implements AccountService {
         Optional<ResponseUtpClient> utpClient = utpInterfaceClient.getUserUtp(new RequestUtpClient(request.getUsername()));
         //OK -> Prcede a crear la cuenta
         if(utpClient.isPresent()){
-            Account account = accountRepository.save(buildAccount(utpClient.get(), request));
-            return buildResponseDto(account);
+            AccountEntity accountEntity = accountRepository.save(buildAccount(utpClient.get(), request));
+            return buildResponseDto(accountEntity);
         }
         //Dont Exist -> Responde que no existe el usuario
         return ResponseDto.builder()
@@ -40,22 +38,22 @@ public class AccountServiceImpl implements AccountService {
                 .build();
     }
 
-    private ResponseDto buildResponseDto(Account account) {
+    private ResponseDto buildResponseDto(AccountEntity accountEntity) {
         return ResponseDto.builder()
                 .valid(Boolean.TRUE)
-                .username(account.getUsername())
+                .username(accountEntity.getUsername())
                 .message("Usuario creado con exito.")
                 .build();
     }
 
 
     @Override
-    public Account saveAccount(Account account) {
-        return accountRepository.save(account);
+    public AccountEntity saveAccount(AccountEntity accountEntity) {
+        return accountRepository.save(accountEntity);
     }
 
     @Override
-    public Account getAccountByUsername(String username) {
+    public AccountEntity getAccountByUsername(String username) {
         return accountRepository.getReferenceById(username);
     }
 
@@ -65,11 +63,11 @@ public class AccountServiceImpl implements AccountService {
     }
 
     @Override
-    public List<Account> getAllAccount() {
+    public List<AccountEntity> getAllAccount() {
         return accountRepository.findAll();
     }
-    private Account buildAccount(ResponseUtpClient responseUtpClient, RequestDto request) {
-        return Account.builder()
+    private AccountEntity buildAccount(ResponseUtpClient responseUtpClient, RequestDto request) {
+        return AccountEntity.builder()
                 .dni(responseUtpClient.getDni())
                 .lastnames(responseUtpClient.getLastname())
                 .mail(responseUtpClient.getEmail())

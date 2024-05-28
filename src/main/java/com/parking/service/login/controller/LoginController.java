@@ -2,7 +2,6 @@ package com.parking.service.login.controller;
 
 import com.parking.service.login.controller.dto.RequestDto;
 import com.parking.service.login.controller.dto.ResponseDto;
-import com.parking.service.login.entities.Account;
 import com.parking.service.login.service.business.AccountService;
 import com.parking.service.login.service.business.AuthenticationService;
 import lombok.RequiredArgsConstructor;

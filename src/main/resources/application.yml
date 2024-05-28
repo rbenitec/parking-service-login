@@ -10,6 +10,9 @@ spring:
   jpa:
     hibernate:
     show-sql: true
-
+config:
+  api:
+    document:
+      url: http://localhost:8089/utp/user
 server:
   port: 8110

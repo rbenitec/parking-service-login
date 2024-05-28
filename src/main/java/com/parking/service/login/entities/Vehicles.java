@@ -7,7 +7,7 @@ import lombok.Data;
 
 @Data
 @Builder
-@Table(name = "account")
+@Table(name = "vehicles")
 public class Vehicles {
     @Id
     private String placa;
