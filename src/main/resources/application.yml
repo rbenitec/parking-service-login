@@ -12,7 +12,7 @@ spring:
     show-sql: true
 config:
   api:
-    document:
-      url: http://localhost:8089/utp/user
+    utp:
+      url: http://localhost:8120/interface/created-user
 server:
   port: 8110

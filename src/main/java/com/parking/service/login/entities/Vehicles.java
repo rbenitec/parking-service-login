@@ -1,7 +1,6 @@
 package com.parking.service.login.entities;
 
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Builder;
 import lombok.Data;
 
@@ -10,5 +9,11 @@ import lombok.Data;
 @Table(name = "vehicles")
 public class Vehicles {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
     private String placa;
+    private String model;
+    private String type;
+    @Column(name = "accountId")
+    private String accountId;
 }

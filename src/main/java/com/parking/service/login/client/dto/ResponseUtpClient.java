@@ -5,6 +5,7 @@ import lombok.Data;
 @Data
 public class ResponseUtpClient {
     private String username;
+    private String password;
     private String email;
     private String createdAt;
     private String names;

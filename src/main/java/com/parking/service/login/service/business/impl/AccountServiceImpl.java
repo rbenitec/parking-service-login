@@ -70,7 +70,7 @@ public class AccountServiceImpl implements AccountService {
         return AccountEntity.builder()
                 .dni(responseUtpClient.getDni())
                 .lastnames(responseUtpClient.getLastname())
-                .mail(responseUtpClient.getEmail())
+                .email(responseUtpClient.getEmail())
                 .names(responseUtpClient.getNames())
                 .password(request.getPassword())
                 .username(responseUtpClient.getUsername())
