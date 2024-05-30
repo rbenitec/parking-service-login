@@ -13,6 +13,6 @@ spring:
 config:
   api:
     utp:
-      url: http://localhost:8120/interface/created-user
+      url: http://localhost:8120/interface/authenticate
 server:
   port: 8110
