@@ -19,7 +19,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
 
     @Override
     public ResponseDto userAuthentication(RequestDto requestDto) {
-        Optional<ResponseUtpClient> utpClient = utpInterfaceClient.getUserUtp(new RequestUtpClient(requestDto.getUsername()));
+        Optional<ResponseUtpClient> utpClient = utpInterfaceClient.getUserUtp(new RequestUtpClient(requestDto.getUsername(), requestDto.getPassword()));
         return utpClient.map(responseUtpClient -> ResponseDto.builder()
                 .valid(Boolean.TRUE)
                 .username(responseUtpClient.getUsername())

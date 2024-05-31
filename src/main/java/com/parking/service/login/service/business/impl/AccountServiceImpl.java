@@ -25,7 +25,7 @@ public class AccountServiceImpl implements AccountService {
     @Override
     public ResponseDto createdAccount(RequestDto request) {
         //ValidarDatos en la inerface de utp
-        Optional<ResponseUtpClient> utpClient = utpInterfaceClient.getUserUtp(new RequestUtpClient(request.getUsername()));
+        Optional<ResponseUtpClient> utpClient = utpInterfaceClient.getUserUtp(new RequestUtpClient(request.getUsername(), request.getPassword()));
         //OK -> Prcede a crear la cuenta
         if(utpClient.isPresent()){
             AccountEntity accountEntity = accountRepository.save(buildAccount(utpClient.get(), request));

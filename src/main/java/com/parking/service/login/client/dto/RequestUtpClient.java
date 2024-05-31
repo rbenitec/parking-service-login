@@ -11,4 +11,5 @@ import lombok.*;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class RequestUtpClient {
     String username;
+    String password;
 }
