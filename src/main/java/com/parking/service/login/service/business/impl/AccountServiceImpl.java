@@ -33,7 +33,7 @@ public class AccountServiceImpl implements AccountService {
         Optional<ResponseUtpClient> utpClient = utpInterfaceClient.getUserUtp(new RequestUtpClient(request.getUsername(), request.getPassword()));
         //OK -> Prcede a crear la cuenta
         if(utpClient.isPresent()){
-            Vehicles vehicles = vehicleService.saveVehicle(builEntityVehicle(request.getVehicleDto()));
+            Vehicles vehicles = vehicleService.saveVehicle(builEntityVehicle(request.getVehicle()));
             AccountEntity accountEntity = accountRepository.save(buildAccount(utpClient.get(), request, vehicles));
             return buildResponseDto(accountEntity);
         }

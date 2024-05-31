@@ -1,11 +1,14 @@
 package com.parking.service.login.entities;
 
 import jakarta.persistence.*;
-import lombok.Builder;
-import lombok.Data;
+import lombok.*;
 
-@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
 @Builder
+@Entity
 @Table(name = "vehicles")
 public class Vehicles {
     @Id

@@ -12,5 +12,5 @@ import lombok.Setter;
 public class RequestAccountDto {
     private String username;
     private String password;
-    private VehicleDto vehicleDto;
+    private VehicleDto vehicle;
 }

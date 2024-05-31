@@ -15,4 +15,4 @@ config:
     utp:
       url: http://localhost:8120/interface/authenticate
 server:
-  port: 8110
+  port: 8099
