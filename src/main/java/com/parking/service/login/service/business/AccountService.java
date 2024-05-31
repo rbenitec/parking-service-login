@@ -1,5 +1,6 @@
 package com.parking.service.login.service.business;
 
+import com.parking.service.login.controller.dto.RequestAccountDto;
 import com.parking.service.login.controller.dto.RequestDto;
 import com.parking.service.login.controller.dto.ResponseDto;
 import com.parking.service.login.entities.AccountEntity;
@@ -7,7 +8,7 @@ import com.parking.service.login.entities.AccountEntity;
 import java.util.List;
 
 public interface AccountService {
-    ResponseDto createdAccount(RequestDto request);
+    ResponseDto createdAccount(RequestAccountDto request);
     AccountEntity saveAccount(AccountEntity accountEntity);
     AccountEntity getAccountByUsername(String username);
     void deleteAccountByUsername(String username);

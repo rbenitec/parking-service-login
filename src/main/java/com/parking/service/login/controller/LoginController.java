@@ -1,5 +1,6 @@
 package com.parking.service.login.controller;
 
+import com.parking.service.login.controller.dto.RequestAccountDto;
 import com.parking.service.login.controller.dto.RequestDto;
 import com.parking.service.login.controller.dto.ResponseDto;
 import com.parking.service.login.service.business.AccountService;
@@ -25,8 +26,8 @@ public class LoginController {
     }
 
     @PostMapping("/account-created")
-    public ResponseEntity<ResponseDto> accountCreated(@RequestBody RequestDto request) {
-        ResponseDto response = accountService.createdAccount(request);
+    public ResponseEntity<ResponseDto> accountCreated(@RequestBody RequestAccountDto requestAccount) {
+        ResponseDto response = accountService.createdAccount(requestAccount);
         if(response!=null) {
             return ResponseEntity.ok(response);
         }else {

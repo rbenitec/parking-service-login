@@ -14,6 +14,4 @@ public class Vehicles {
     private String placa;
     private String model;
     private String type;
-    @Column(name = "accountId")
-    private String accountId;
 }
