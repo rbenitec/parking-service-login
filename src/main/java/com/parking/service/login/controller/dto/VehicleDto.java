@@ -13,5 +13,4 @@ public class VehicleDto {
     private String placa;
     private String modelo;
     private String type;
-    private String color;
 }

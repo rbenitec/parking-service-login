@@ -88,7 +88,8 @@ public class AccountServiceImpl implements AccountService {
                 .names(responseUtpClient.getNames())
                 .password(request.getPassword())
                 .username(responseUtpClient.getUsername())
-                .vehiclesId(vehicles.getId())
+                .status(true)
+                .accountId(vehicles.getId())
                 .build();
     }
 }

@@ -13,12 +13,10 @@ import lombok.*;
 public class AccountEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private String id;
-    @Column(name = "vehicles_id")
-    private Integer vehiclesId;
+    private Integer id;
     private String email;
     private String password;
-    @Column(name = "names")
+    @Column(name = "nombres")
     private String names;
     @Column(name = "apellidos")
     private String lastnames;
@@ -26,4 +24,7 @@ public class AccountEntity {
     private Boolean status;
     private String dni;
     private String username;
+    @Column(name = "account_id")
+    private Integer accountId;
+
 }
