@@ -15,7 +15,7 @@ public class ResponseUtpClient {
     private String username;
     private String password;
     private String email;
-    private LocalDate createdAt;
+    private String createdAt;
     private String names;
     private String lastname;
     private String dni;

@@ -24,7 +24,9 @@ public class AccountEntity {
     private Boolean status;
     private String dni;
     private String username;
-    @Column(name = "account_id")
-    private Integer accountId;
+    @Column(name = "qrcode")
+    private String qrCode;
+    @Column(name = "vehicle_id")
+    private Integer vehicleId;
 
 }
