@@ -18,6 +18,7 @@ import com.parking.service.login.service.qr.QRCodeGenerator;
 import com.parking.service.login.util.ConstantUtil;
 import com.parking.service.login.util.MapperUtil;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.Base64;
@@ -26,6 +27,7 @@ import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
+@Slf4j
 public class AccountServiceImpl implements AccountService {
 
     private final AccountRepository accountRepository;
@@ -35,6 +37,7 @@ public class AccountServiceImpl implements AccountService {
 
     @Override
     public ResponseDto createdAccount(RequestAccountDto request) {
+        log.info("Request createdAccount: {}", request);
         //ValidarDatos en la inerface de utp
         Optional<ResponseUtpClient> utpClient = utpInterfaceClient.getUserUtp(new RequestUtpClient(request.getUsername(), request.getPassword()));
         //OK -> Prcede a crear la cuenta
@@ -43,6 +46,7 @@ public class AccountServiceImpl implements AccountService {
             byte[] image = qrCodeGenerator.getQRCodeImage(buildContentQr(utpClient.get(), vehicles), 250,250);
             String qrcode = Base64.getEncoder().encodeToString(image);
             AccountEntity accountEntity = accountRepository.save(buildAccount(utpClient.get(), request, vehicles, qrcode));
+            utpClient.get().setAccountId(accountEntity.getId());
             qrCodeGenerator.generateQRCodeImage(buildContentQr(utpClient.get(), vehicles),250,250, ConstantUtil.QR_CODE_IMAGE_PATH);
             System.out.println("QRCODE: "+ qrcode);
             return buildResponseDto(accountEntity);
@@ -51,6 +55,7 @@ public class AccountServiceImpl implements AccountService {
         return ResponseDto.builder()
                 .valid(Boolean.FALSE)
                 .message("Hubo un error al crear el usuario.")
+                //.campus(utpClient.get().getCampus())
                 .build();
     }
 
@@ -85,13 +90,13 @@ public class AccountServiceImpl implements AccountService {
     }
 
     @Override
-    public AccountEntity getAccountByUsername(String username) {
-        return accountRepository.getReferenceById(username);
+    public Optional<AccountEntity> getAccountByUsername(String username) {
+        return accountRepository.getAccountByUsername(username);
     }
 
     @Override
-    public void deleteAccountByUsername(String dni) {
-        accountRepository.deleteById(dni);
+    public void deleteAccount(Integer idAccount) {
+        accountRepository.deleteById(idAccount);
     }
 
     @Override

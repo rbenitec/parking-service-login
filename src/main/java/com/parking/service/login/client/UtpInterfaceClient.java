@@ -1,5 +1,6 @@
 package com.parking.service.login.client;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.parking.service.login.client.dto.RequestUtpClient;
 import com.parking.service.login.client.dto.ResponseUtpClient;
 import lombok.RequiredArgsConstructor;

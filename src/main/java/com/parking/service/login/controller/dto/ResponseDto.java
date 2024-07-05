@@ -13,4 +13,8 @@ public class ResponseDto {
     private Boolean valid;
     private String message;
     private String username;
+    private String campus;
+    private String names;
+    private String qr;
+    private VehicleDto vehicleDto;
 }

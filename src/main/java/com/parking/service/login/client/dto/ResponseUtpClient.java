@@ -10,6 +10,7 @@ import java.time.LocalDate;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
+@ToString
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class ResponseUtpClient {
     private String username;
@@ -19,4 +20,6 @@ public class ResponseUtpClient {
     private String names;
     private String lastname;
     private String dni;
+    private String campus;
+    private Integer accountId;
 }

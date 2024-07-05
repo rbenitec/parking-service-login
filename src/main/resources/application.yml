@@ -16,3 +16,9 @@ config:
       url: http://localhost:8120/interface/authenticate
 server:
   port: 8099
+
+#datasource:
+#  url: jdbc:mysql://up2ovi0k86ju7shs:eDdpvHL2JQEpk4vIkfaf@bxe9edlcgpif4rkxiwwf-mysql.services.clever-cloud.com:3306/bxe9edlcgpif4rkxiwwf
+#  username: up2ovi0k86ju7shs
+#  password: eDdpvHL2JQEpk4vIkfaf
+#  driver-class-name: com.mysql.cj.jdbc.Driver
